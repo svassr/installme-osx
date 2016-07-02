@@ -2,12 +2,11 @@
 
 
 # setup folder structure
-mkdir ~/Documents/workspace
-mkdir ~/Documents/repos
+mkdir ~/Projects
 
 
 # brew setup
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew update
 brew upgrade
@@ -41,34 +40,36 @@ alias vim='mvim -v'
 # OSX native apps
 brew install caskroom/cask/brew-cask
 
-function installcask() {
+function brewcask() {
     brew cask install "${@}" 2> /dev/null
 }
 
 # dev-related programs
-installcask atom
-installcask dropbox
-installcask copy
-installcask google-chrome
-installcask firefox
-installcask iterm2
-installcask sourcetree
+brewcask atom
+brewcask intellij-idea
+brewcask dropbox
+brewcask google-chrome
+brewcask google-chrome-canary
+brewcask firefox
+brewcask opera
+brewcask iterm2
+brewcask sourcetree
+
 
 # utils
-installcask skype
-installcask lastfm
-installcask vlc
-installcask 1password
-installcask camtasia
-installcask cleanmymac
-installcask macpaw-gemini
-installcask flickr-uploadr
-installcask spotify
+brewcask skype
+brewcask vlc
+# brewcask camtasia
+brewcask teamviewer
+brewcask cleanmymac
+brewcask macpaw-gemini
+brewcask spotify
+brewcask deezer
 
 # games
-installcask steam
-installcask minecraft
-installcask openttd
+brewcask steam
+# brewcask minecraft
+# brewcask openttd
 
 
 # npm dependencies that I'm not likely to live without
@@ -121,12 +122,13 @@ make
 
 
 ## Get dotfiles repo and setup symlinks
-cd ~/Documents/repos/
-git clone https://github.com/ruyadorno/dotfiles.git
-cd ~/
-ln -s Documents/repos/dotfiles/bashrc .bash_profile
-ln -s Documents/repos/dotfiles/gitconfig .gitconfig
-ln -s Documents/repos/dotfiles/gitignore_global .gitignore_global
-ln -s Documents/repos/dotfiles/hgrc .hgrc
-ln -s Documents/repos/dotfiles/vimrc .vimrc
+cd ~/Projects/
+git clone https://github.com/svassr/dotfiles.git
 
+~/Projects/dotfiles/bootstrap.sh
+
+cd ~/
+ln -s ~/Projects/dotfiles/.bash_profile .bash_profile
+ln -s ~/Projects/dotfiles/.gitconfig .gitconfig
+ln -s ~/Projects/dotfiles/.gitignore .gitignore
+ln -s ~/Projects/dotfiles/.vimrc .vimrc
