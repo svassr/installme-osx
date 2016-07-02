@@ -4,7 +4,6 @@
 # setup folder structure
 mkdir ~/Projects
 
-
 # brew setup
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -46,6 +45,7 @@ function brewcask() {
 
 # dev-related programs
 brewcask atom
+brew install homebrew/completions/apm-bash-completion
 brewcask intellij-idea
 brewcask dropbox
 brewcask google-chrome
@@ -55,12 +55,20 @@ brewcask opera
 brewcask iterm2
 brewcask sourcetree
 
+# dev-related programs - install rvm
+\curl -sSL https://get.rvm.io | bash -s stable --ruby
+
+# dev-related programs - install Vagrant
+brewcask vagrant #require root autorisation
+brewcask vagrant-manager
+brew install  homebrew/completions/vagrant-completion
+
+# dev-related programs - install meteor
+\curl https://install.meteor.com/ | sh
 
 # utils
 brewcask skype
 brewcask vlc
-# brewcask camtasia
-brewcask teamviewer
 brewcask cleanmymac
 brewcask macpaw-gemini
 brewcask spotify
@@ -73,12 +81,15 @@ brewcask steam
 
 
 # npm dependencies that I'm not likely to live without
+npm install -g nvm
 npm install -g jshint
 npm install -g jsxhint
 npm install -g grunt-cli
 npm install -g gulp
 npm install -g yo
 npm install -g http-server
+npm install -g jasmine
+npm install -g mocha
 
 
 # vim setup
